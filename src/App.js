@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// * node_modules
+import React from "react";
 
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/globalStyles";
+import { Button } from "./theme";
+import theme from "./styles";
+import TaskForm from "./components/TaskForm";
+import TaskListContextProvider from "./context/TaskLIstContext";
+
+// * JSX
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TaskListContextProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <TaskForm />
+        <br />
+        <Button variant="outline" size="small">
+          SMALL
+        </Button>
+        <br />
+        <Button variant="contained" size="medium">
+          MEDIUM
+        </Button>
+        <br />
+        <Button variant="outline" size="large">
+          LARGE
+        </Button>
+      </ThemeProvider>
+    </TaskListContextProvider>
   );
 }
 
